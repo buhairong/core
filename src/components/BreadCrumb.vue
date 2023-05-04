@@ -10,17 +10,27 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { reactive, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import type { IRouterMeta } from '@/types/router'
 
 const router = useRouter()
-const meta: any = (router.getRoutes()[0] as any).meta
 let breadcrumb = reactive<IRouterMeta[]>([])
 
-if (meta && meta.breadCrumb) {
-  breadcrumb = reactive(meta.breadCrumb)
-}
+console.log('router1', router)
+
+watch(
+  () => router,
+  (val) => {
+    console.log('router2', val)
+    const meta: any = (val.getRoutes()[0] as any).meta
+
+    if (meta && meta.breadCrumb) {
+      breadcrumb = reactive(meta.breadCrumb)
+    }
+  },
+  { deep: true, immediate: true }
+)
 </script>
 
 <style lang="scss" scoped></style>

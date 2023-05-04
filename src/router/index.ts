@@ -26,6 +26,14 @@ const router = createRouter({
           meta: {
             breadCrumb: [{ name: '商户管理' }, { name: '汽车经销商' }]
           }
+        },
+        {
+          path: '/businessManagement/businessAudit',
+          name: 'FinancialService',
+          component: () => import('../views/merchant/FinancialService.vue'),
+          meta: {
+            breadCrumb: [{ name: '商户管理' }, { name: '金融服务商' }]
+          }
         }
       ]
     }

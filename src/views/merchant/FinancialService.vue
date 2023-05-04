@@ -1,5 +1,5 @@
 <template>
-  <div>汽车经销商</div>
+  <div>金融服务商</div>
 </template>
 
 <script setup lang="ts"></script>
