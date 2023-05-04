@@ -17,12 +17,9 @@ import type { IRouterMeta } from '@/types/router'
 const router = useRouter()
 let breadcrumb = reactive<IRouterMeta[]>([])
 
-console.log('router1', router)
-
 watch(
   () => router,
   (val) => {
-    console.log('router2', val)
     const meta: any = (val.getRoutes()[0] as any).meta
 
     if (meta && meta.breadCrumb) {

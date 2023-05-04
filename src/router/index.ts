@@ -34,6 +34,30 @@ const router = createRouter({
           meta: {
             breadCrumb: [{ name: '商户管理' }, { name: '金融服务商' }]
           }
+        },
+        {
+          path: '/product/productTemplate',
+          name: 'Template',
+          component: () => import('../views/plan/Template.vue'),
+          meta: {
+            breadCrumb: [{ name: '产品管理' }, { name: '产品模板' }]
+          }
+        },
+        {
+          path: '/product/subscribe',
+          name: 'Subscribe',
+          component: () => import('../views/plan/Subscribe.vue'),
+          meta: {
+            breadCrumb: [{ name: '产品管理' }, { name: '订阅方案' }]
+          }
+        },
+        {
+          path: '/product/finance',
+          name: 'Financial',
+          component: () => import('../views/plan/Financial.vue'),
+          meta: {
+            breadCrumb: [{ name: '产品管理' }, { name: '金融方案' }]
+          }
         }
       ]
     }

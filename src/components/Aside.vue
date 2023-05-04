@@ -59,6 +59,9 @@ const findChildMenus = (id: number) => {
     if (res.code === 0) {
       asideMenuList = res.data
       activeMenuUrl.value = res.data[0].url
+      router.push({
+        path: res.data[0].url
+      })
     }
   })
 }
