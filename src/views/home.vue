@@ -39,7 +39,6 @@ const changeFirstMenu = (id: number) => {
       flex-direction: column;
       background-color: #e9eef3;
       .content {
-        margin-top: 20px;
         padding: 20px;
         flex: 1;
         width: 100%;

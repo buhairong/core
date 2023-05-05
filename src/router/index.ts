@@ -58,6 +58,22 @@ const router = createRouter({
           meta: {
             breadCrumb: [{ name: '产品管理' }, { name: '金融方案' }]
           }
+        },
+        {
+          path: '/order/financialOrderManagement',
+          name: 'NewCarOrder',
+          component: () => import('../views/order/NewCarOrder.vue'),
+          meta: {
+            breadCrumb: [{ name: '订单管理' }, { name: '全新车订单' }]
+          }
+        },
+        {
+          path: '/order/olderCarOrder',
+          name: 'OldCarOrder',
+          component: () => import('../views/order/OldCarOrder.vue'),
+          meta: {
+            breadCrumb: [{ name: '订单管理' }, { name: '二手车订单' }]
+          }
         }
       ]
     }

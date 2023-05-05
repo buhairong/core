@@ -6,17 +6,23 @@
     <el-menu :default-active="activeMenuUrl" router class="el-menu-vertical-demo">
       <template v-for="item in asideMenuList" :key="item.id">
         <el-menu-item v-if="!item.thirdMenus || !item.thirdMenus.length" :index="item.url">
-          <i class="el-icon-menu"></i>
+          <el-icon :size="size">
+            <Menu />
+          </el-icon>
           <span>{{ item.name }}</span>
         </el-menu-item>
         <el-sub-menu :index="item.url" v-else>
           <template #title>
-            <i class="el-icon-menu"></i>
+            <el-icon :size="size">
+              <Menu />
+            </el-icon>
             <span>{{ item.name }}</span>
           </template>
           <el-menu-item v-for="item1 in item.thirdMenus" :key="item1.id" :index="item1.url">
-            <i class="el-icon-menu"></i>
-            <span>{{ item.name }}</span>
+            <el-icon :size="size">
+              <Menu />
+            </el-icon>
+            <span>{{ item1.name }}</span>
           </el-menu-item>
         </el-sub-menu>
       </template>
@@ -37,6 +43,7 @@ const props = defineProps({
   }
 })
 const router = useRouter()
+const size = 14
 
 let asideMenuList = reactive<Menu[]>([])
 const activeMenuUrl = ref('')
