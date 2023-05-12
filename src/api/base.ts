@@ -1,10 +1,11 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import router from '../router/index'
 
 const instance = axios.create({
-  baseURL: 'https://uat-api.51cheyaoshi.com',
+  //baseURL: 'https://uat-api.51cheyaoshi.com',
   //baseURL: 'https://api.51cheyaoshi.com',
-  //baseURL: process.env.VUE_APP_BASE_URL,
+  baseURL: import.meta.env.MODE === 'development' ? '/api' : 'https://api.51cheyaoshi.com',
   timeout: 20000
 })
 
@@ -23,8 +24,16 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   (response) => {
     const { data: _data } = response
-    const { code, msg } = _data
-    if (code !== 0) {
+    const { data, code, msg } = _data
+
+    if (code === 401001) {
+      ElMessage.error({
+        message: msg
+      })
+
+      router.push('/login')
+      return Promise.reject(msg)
+    } else if (code !== 0) {
       ElMessage.error({
         message: msg
       })
@@ -32,7 +41,7 @@ instance.interceptors.response.use(
       return Promise.reject(msg)
     }
 
-    return _data
+    return data
   },
   (err) => {
     return Promise.reject(err)

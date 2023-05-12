@@ -43,24 +43,12 @@ const submitForm = () => {
   if (formRef.value) {
     formRef.value.validate((valid) => {
       if (valid) {
-        accountLoginNotify(form)
-          .then((res: any) => {
-            if (res.code === 0) {
-              localStorage.setItem('token', res.data.token)
-              router.push({
-                path: '/home'
-              })
-            } else {
-              ElMessage.error({
-                message: res.msg
-              })
-            }
+        accountLoginNotify(form).then((res: any) => {
+          localStorage.setItem('token', res.token)
+          router.push({
+            path: '/home'
           })
-          .catch((err) => {
-            ElMessage.error({
-              message: err
-            })
-          })
+        })
       }
     })
   }

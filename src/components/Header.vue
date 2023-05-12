@@ -44,11 +44,9 @@ const getFindFirstMenus = () => {
     systemId: 2
   }
   findFirstMenus(data).then((res: any) => {
-    if (res.code == 0) {
-      firstMenuList = res.data
-      activeMenu.value = firstMenuList[0].id
-      handleChangeMenu()
-    }
+    firstMenuList = res
+    activeMenu.value = firstMenuList[0].id
+    handleChangeMenu()
   })
 }
 

@@ -41,8 +41,10 @@ const changeFirstMenu = (id: number) => {
       .content {
         padding: 20px;
         flex: 1;
+        height: 0;
         width: 100%;
         background: #fff;
+        overflow: auto;
       }
     }
   }

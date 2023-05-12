@@ -11,5 +11,14 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://uat-api.51cheyaoshi.com',
+        rewrite: (path) => path.replace(/^\/api/, ''),
+        changeOrigin: true
+      }
+    }
   }
 })

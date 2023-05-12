@@ -1,0 +1,179 @@
+@import "variable.scss";
+
+.el-breadcrumb {
+    margin: 0.2833rem 0;
+}
+
+.el-breadcrumb .el-breadcrumb__inner {
+    font-family: PingFangSC-Regular;
+    font-size: 0.2333rem;
+    font-weight: normal;
+    color: #4e5969;
+}
+
+.el-breadcrumb .subscription-plan .el-breadcrumb__inner {
+    font-family: PingFangSC-Medium;
+    font-size: 0.2333rem;
+    font-weight: normal;
+    color: #1d2129;
+}
+
+.el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    width: 178px;
+    height: 178px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.el-upload .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+}
+.el-upload .avatar {
+    max-width: 178px;
+    display: block;
+}
+
+.select-item {
+    display: flex;
+    align-items: center;
+}
+
+.select-wrap {
+    width: 145px;
+    height: 31px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    background: #F2F3F5;
+    .el-select {
+        flex: 1;
+        height: 100%;
+        .el-input, .el-input__inner {
+            width: 100%;
+            height: 31px;
+            line-height: 31px;
+            border: none;
+            background: transparent;
+            padding: 0;
+        }
+        .el-select__caret {
+            height: 31px;
+            line-height: 31px;
+        }
+    }
+}
+
+.el-input-number {
+    height: 100%;
+    border: none;
+    background: transparent;
+    .el-input, .el-input .el-input__inner {
+        width: 100%;
+        height: 31px;
+        line-height: 31px;
+        border: none;
+        background: transparent;
+        padding: 0;
+        text-align: left;
+    }
+}
+
+.el-table__header, .el-table__body, .el-table__footer{
+    width:100% !important;
+    table-layout: fixed !important;
+}
+
+.el-table__footer-wrapper {
+    .el-table__footer {
+        .el-table__cell {
+            background: #fff;
+        }
+    }
+}
+
+.el-table::before {
+    height: 0;
+}
+
+.el-table__fixed-right::before, .el-table__fixed::before {
+    height: 0;
+}
+
+.el-tooltip__popper {
+    max-width: 80vw;
+    white-space: pre;
+    line-height: 26px;
+}
+
+.el-tooltip__popper__200 {
+    max-width: 200px;
+}
+
+.el-tooltip.item {
+    display: block !important;
+}
+
+.wecars-input {
+    width: 244px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 2px;
+    padding: 0 8px;
+    background: #F2F3F5;
+    .el-input__inner {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: none;
+    }
+}
+
+.el-textarea {
+    #wecars-textarea {
+        padding: 16px;
+    }
+}
+
+.dialog-btn-wrap {
+    display: flex;
+    justify-content: flex-end;
+    .btn {
+        width: 91px;
+        height: 32px;
+        border-radius: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #F2F3F5;
+        font-family: PingFangSC-Regular;
+        font-size: 14px;
+        color: #1D2129;
+        z-index: 0;
+        cursor: default;
+    }
+    .save-btn {
+        margin-left: 8px;
+        background: #3446AA;
+        color: #FFFFFF;
+    }
+}
+
+.el-form-item_required {
+    .el-form-item__label:before {
+        content: '*';
+        color: #F56C6C;
+        margin-right: 4px;
+        line-height: 32px;
+    }
+}

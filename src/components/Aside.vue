@@ -63,13 +63,11 @@ const findChildMenus = (id: number) => {
     id
   }
   findSecondMenus(data).then((res: any) => {
-    if (res.code === 0) {
-      asideMenuList = res.data
-      activeMenuUrl.value = res.data[0].url
-      router.push({
-        path: res.data[0].url
-      })
-    }
+    asideMenuList = res
+    activeMenuUrl.value = res[0].url
+    router.push({
+      path: res[0].url
+    })
   })
 }
 
