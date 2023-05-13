@@ -2,7 +2,7 @@
   <div>
     <Search :type="type" :search="search" @search="handlerSearch" />
     <List :type="type" :list="list" @search="handlerSearch" />
-    <pagination :total="total" :pageSize="5" @handleCurrentChange="handleCurrentChange" />
+    <pagination :total="total" @current-change="handleCurrentChange" />
   </div>
 </template>
 

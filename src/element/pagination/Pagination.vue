@@ -2,7 +2,7 @@
   <div class="pagination-wrap" v-if="props.total">
     <el-pagination
       v-model:current-page="page"
-      :page-size="props.pageSize"
+      :page-size="10"
       layout="total, prev, pager, next"
       :total="total"
       v-bind="$attrs"
@@ -12,16 +12,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, withDefaults } from 'vue'
+import { ref } from 'vue'
 
 interface IProps {
   total: number
-  pageSize?: number
 }
 
-const props = withDefaults(defineProps<IProps>(), {
-  pageSize: 10
-})
+const props = defineProps<IProps>()
 
 const page = ref(1)
 </script>

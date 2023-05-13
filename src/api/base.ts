@@ -5,7 +5,7 @@ import router from '../router/index'
 const instance = axios.create({
   //baseURL: 'https://uat-api.51cheyaoshi.com',
   //baseURL: 'https://api.51cheyaoshi.com',
-  baseURL: import.meta.env.MODE === 'development' ? '/api' : 'https://api.51cheyaoshi.com',
+  baseURL: import.meta.env.MODE === 'development' ? '/api' : import.meta.env.VITE_BASE_URL,
   timeout: 20000
 })
 
