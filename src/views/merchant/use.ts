@@ -11,7 +11,10 @@ export const useSearch = (companyType: number) => {
 
   const handlerSearch = (data: ISearch | undefined) => {
     if (data) {
-      search.value = data
+      search.value = {
+        ...search.value,
+        ...data
+      }
     }
 
     selectList()

@@ -115,3 +115,31 @@ div {
     }
 }
 
+.search-wrap {
+    margin-bottom: 20px;
+    .search-line {
+        display: flex;
+        align-items: center;
+
+        .search-item {
+            display: flex;
+            align-items: center;
+            margin-right: 24px;
+
+            .label {
+                height: 22px;
+                font-family: PingFangSC-Regular;
+                font-size: 14px;
+                line-height: 22px;
+                color: #4E5969;
+                margin-right: 16px;
+                text-align: right;
+            }
+        }
+    }
+    .search-line2 {
+        margin-top: 30px;
+    }
+}
+
+
