@@ -36,6 +36,22 @@ const router = createRouter({
           }
         },
         {
+          path: '/businessManagement/detail',
+          name: 'MerchantDetail',
+          component: () => import('../views/merchant/MerchantDetail.vue'),
+          meta: {
+            breadCrumb: [{ name: '商户管理' }, { name: '商户详情' }]
+          }
+        },
+        {
+          path: '/businessManagement/addMerchant',
+          name: 'setMerchant',
+          component: () => import('../views/merchant/SetMerchant.vue'),
+          meta: {
+            breadCrumb: [{ name: '商户管理' }, { name: '设置商户' }]
+          }
+        },
+        {
           path: '/product/productTemplate',
           name: 'Template',
           component: () => import('../views/plan/Template.vue'),

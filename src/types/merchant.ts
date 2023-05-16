@@ -29,3 +29,78 @@ export interface IList {
   records: IRecord[]
   total: number
 }
+
+export interface ICity {
+  city: string
+  id: number
+}
+
+export interface IOpenOrCloseCarTypeParams {
+  companyId: number
+  showAllBrand: number
+}
+
+export interface ICompnay {
+  address: string
+  bankAccount: string
+  bankName: string
+  businessLicense: string
+  carBrandIdList: number[]
+  carBrandNameList: string[]
+  chooseRole: number
+  cityId: number
+  cityName: string
+  companyName: string
+  companyType: number
+  contactMobile: string
+  contactName: string
+  contractStatus: number
+  corporationTaxNumber: string
+  financeLicence: string
+  id: number
+  introduce: string
+  isFinancial: number
+  lat: number
+  lng: number
+  logoImageUrl: string
+  mchId: null
+  mchKey: null
+  rejectDetails: string
+  shopEnvironmentPic: string
+  shopHallPic: string
+  shopHeadPic: string
+  shopName: string
+  showAllBrand: string
+  status: number
+  valid: number
+  whetherReceipt: number
+}
+
+export interface IMerchantDetail {
+  company: ICompnay
+  managerMobile: string
+  managerName: string
+}
+
+export interface ISetMerchant {
+  id: number | null
+  address: string
+  bankAccount: string
+  bankName: string
+  businessLicense: string
+  carBrandIdList: number[]
+  chooseRole: number | null
+  cityId: number | null
+  cityName: string
+  companyName: string
+  companyType: number | null
+  contactMobile: string
+  corporationTaxNumber: string
+  isFinancial: number | null
+  lat: number | null
+  lng: number | null
+  managerMobile: string
+  managerName: string
+  shopHeadPic: string
+  shopName: string
+}

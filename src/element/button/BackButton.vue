@@ -1,42 +1,37 @@
 <template>
-    <div class="back-btn"
-        :style="buttonStyle"
-        @click="back"
-    >
-        {{text}}
-    </div>
+  <div class="back-btn" @click="back">
+    {{ props.text }}
+  </div>
 </template>
 
-<script>
-export default {
-    props: {
-        text: {
-            type: String,
-            default: '返回',
-        },
+<script setup lang="ts">
+import { useRouter } from 'vue-router'
 
-        buttonStyle: {
-            type: Object,
-            default: () => ({}),
-        },
-    },
-    methods: {
-        back() {
-            this.$router.back()
-        }
-    },
+interface IProps {
+  text?: string
+}
+
+const props = withDefaults(defineProps<IProps>(), {
+  text: '返回'
+})
+
+const router = useRouter()
+
+const back = () => {
+  router.back()
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .back-btn {
-    height: 40px;
-    border-radius: 2px;
-    display: flex;
-    align-items: center;
-    padding: 0 24px;
-    background: #F2F3F5;
-	color: #1D2129;
-    font-size: 14px;
+  height: 40px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  background: #f2f3f5;
+  color: #1d2129;
+  font-size: 14px;
+  cursor: default;
 }
 </style>

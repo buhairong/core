@@ -4,6 +4,8 @@ import Input from './input/CInput.vue'
 import CSelect from './select/CSelect.vue'
 import SearchButton from './button/SearchButton.vue'
 import ResetButton from './button/ResetButton.vue'
+import CreateButton from './button/CreateButton.vue'
+import BackButton from './button/BackButton.vue'
 
 export default {
   install(app: App) {
@@ -12,5 +14,7 @@ export default {
     app.component('c-select', CSelect)
     app.component('search-button', SearchButton)
     app.component('reset-button', ResetButton)
+    app.component('create-button', CreateButton)
+    app.component('back-button', BackButton)
   }
 }

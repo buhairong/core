@@ -1,3 +1,7 @@
+interface Number_Key {
+  [key: number]: string
+}
+
 // 图片上传地址
 export const UPLOAD_URL = 'https://api.51cheyaoshi.com/security/sysFiles/upload'
 
@@ -240,7 +244,7 @@ export const IDENTITY_RESOURCE = {
 }
 
 // 商户角色：1 4s，2 二级销售网络，3 二手车商
-export const COMPANY_ROLE = {
+export const COMPANY_ROLE: Number_Key = {
   1: '4S店',
   2: '二级销售网络',
   3: '二手车商'
@@ -254,7 +258,7 @@ export const COMPANY_ROLE_LIST = [
 ]
 
 // 商户所属行业：1 汽车经销商，2金融服务商，3 汽车制造商，4 保险公司，5 修理厂，6 二手车商，7 加油站，8 充电站，9洗车房
-export const COMPANY_TYPE = {
+export const COMPANY_TYPE: Number_Key = {
   1: '汽车经销商',
   2: '金融服务商',
   3: '汽车制造商',
@@ -266,12 +270,8 @@ export const COMPANY_TYPE = {
   9: '洗车房'
 }
 
-interface MERCHANT_STATUS_TYPE {
-  [key: number]: string
-}
-
 // 商户状态
-export const MERCHANT_STATUS: MERCHANT_STATUS_TYPE = {
+export const MERCHANT_STATUS: Number_Key = {
   0: '待入驻',
   1: '已入驻'
 }
@@ -283,7 +283,7 @@ export const MERCHANT_STATUS_LIST = [
 ]
 
 // 资产持有公司
-export const ASSET_COMPANY = {
+export const ASSET_COMPANY: Number_Key = {
   1: '是',
   0: '否'
 }
