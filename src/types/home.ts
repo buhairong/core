@@ -20,3 +20,12 @@ export interface Menu {
   valid: number
   thirdMenus: Menu[]
 }
+
+export interface IUploadFile {
+  code: number
+  msg: string
+  data: {
+    fileId: string
+    src: string
+  }
+}

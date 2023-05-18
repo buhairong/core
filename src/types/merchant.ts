@@ -76,8 +76,26 @@ export interface ICompnay {
   whetherReceipt: number
 }
 
+export interface IDecorate {
+  companyId: number
+  createId: number
+  createName: string
+  createTime: string
+  decorateName: string
+  id: number
+}
+
+export interface IUser {
+  companyUserName: string
+  id: number
+  mobile: string
+  roleName: string
+}
+
 export interface IMerchantDetail {
   company: ICompnay
+  decorateList: IDecorate[]
+  userRespVos: IUser[]
   managerMobile: string
   managerName: string
 }

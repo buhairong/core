@@ -100,6 +100,36 @@ div {
     line-height: 32px;
 }
 
+.content-tabs {
+    width: 100%;
+    white-space: nowrap;
+    overflow: auto;
+
+    .tab {
+        display: inline-block;
+        margin-right: 8px;
+        width: 88px;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        border-radius: 32px;
+        font-family: PingFangSC-Regular;
+        font-size: 14px;
+        cursor: default;
+
+        &.active {
+            background: #F2F3F8;
+            color: #3446AA;
+        }
+    }
+}
+
+.content-tabs-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center
+}
+
 .tabs {
     display: flex;
     .tab {

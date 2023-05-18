@@ -69,3 +69,21 @@ export function setFinancialService(data: ISetMerchant) {
     data
   })
 }
+
+// OCR识别 营业执照
+export function ocrBusinessLicense(data: { businessLicense: string }) {
+  return instance<string, string>({
+    url: '/manager/company/ocrBusinessLicense',
+    method: 'POST',
+    data
+  })
+}
+
+// 删除装潢
+export function deleteDecorate(data: { id: number }) {
+  return instance({
+    url: '/manager/company/deleteDecorate',
+    method: 'POST',
+    data
+  })
+}
