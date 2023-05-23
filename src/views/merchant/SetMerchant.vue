@@ -36,7 +36,7 @@
 import { useRoute } from 'vue-router'
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
-import { useSet } from './use'
+import { useSet } from './use/use'
 import { COMPANY_TYPE } from '@/utils/constant'
 import Step1 from './components/Step1.vue'
 import Step2 from './components/Step2.vue'

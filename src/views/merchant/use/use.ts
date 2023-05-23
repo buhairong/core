@@ -10,7 +10,7 @@ import {
   setFinancialService,
   ocrBusinessLicense
 } from '@/api/merchant/merchant'
-import { defaultSearchValue, defaultDetailValue } from './constant'
+import { defaultSearchValue, defaultDetailValue } from '../constant'
 import { IMG_LIMIT_SIZE } from '@/utils/constant'
 
 export const useSearch = (companyType: number) => {

@@ -127,7 +127,7 @@ import { ref, watch } from 'vue'
 import { getAllCity } from '@/api/merchant/merchant'
 import { getCarBrand } from '@/api/car/car'
 import { COMPANY_ROLE_LIST, ASSET_COMPANY_LIST, UPLOAD_URL, IMG_ACCEPT } from '@/utils/constant'
-import { useSetStep1 } from '../use'
+import { useSetStep1 } from '../use/use'
 
 interface IProps {
   params: ISetMerchant

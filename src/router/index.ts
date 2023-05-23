@@ -19,6 +19,7 @@ const router = createRouter({
       name: 'home',
       component: Home,
       children: [
+        // 商户管理
         {
           path: '/businessManagement/businessManagement',
           name: 'CarDealer',
@@ -51,6 +52,8 @@ const router = createRouter({
             breadCrumb: [{ name: '商户管理' }, { name: '设置商户' }]
           }
         },
+
+        // 产品管理
         {
           path: '/product/productTemplate',
           name: 'Template',
@@ -75,6 +78,8 @@ const router = createRouter({
             breadCrumb: [{ name: '产品管理' }, { name: '金融方案' }]
           }
         },
+
+        // 订单管理
         {
           path: '/order/financialOrderManagement',
           name: 'NewCarOrder',
@@ -89,6 +94,64 @@ const router = createRouter({
           component: () => import('../views/order/OldCarOrder.vue'),
           meta: {
             breadCrumb: [{ name: '订单管理' }, { name: '二手车订单' }]
+          }
+        },
+
+        // 系统设置
+        {
+          path: '/system/openNewCar',
+          name: 'openNewCar',
+          component: () => import('../views/system/openNewCar.vue'),
+          meta: {
+            breadCrumb: [{ name: '系统配置' }, { name: '全新车开放' }]
+          }
+        },
+        {
+          path: '/system/openOldCar',
+          name: 'openOldCar',
+          component: () => import('../views/system/openOldCar.vue'),
+          meta: {
+            breadCrumb: [{ name: '系统配置' }, { name: '二手车开放' }]
+          }
+        },
+        {
+          path: '/system/account',
+          name: 'account',
+          component: () => import('../views/system/account.vue'),
+          meta: {
+            breadCrumb: [{ name: '系统配置' }, { name: '收款信息' }]
+          }
+        },
+        {
+          path: '/system/GPS',
+          name: 'GPS',
+          component: () => import('../views/system/GPS.vue'),
+          meta: {
+            breadCrumb: [{ name: '系统配置' }, { name: 'GPS' }]
+          }
+        },
+        {
+          path: '/system/IRR',
+          name: 'IRR',
+          component: () => import('../views/system/IRR.vue'),
+          meta: {
+            breadCrumb: [{ name: '系统配置' }, { name: 'IRR' }]
+          }
+        },
+        {
+          path: '/system/restrictedCity',
+          name: 'restrictedCity',
+          component: () => import('../views/system/restrictedCity.vue'),
+          meta: {
+            breadCrumb: [{ name: '系统配置' }, { name: '限牌城市' }]
+          }
+        },
+        {
+          path: '/system/limitedMileage',
+          name: 'limitedMileage',
+          component: () => import('../views/system/limitedMileage.vue'),
+          meta: {
+            breadCrumb: [{ name: '系统配置' }, { name: '限定里程' }]
           }
         }
       ]
