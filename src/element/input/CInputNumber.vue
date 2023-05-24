@@ -11,10 +11,10 @@
 
 <script setup lang="ts">
 interface IProps {
-  placeholder: string
-  min: number
-  precision: number
-  controls: boolean
+  placeholder?: string
+  min?: number
+  precision?: number
+  controls?: boolean
 }
 
 withDefaults(defineProps<IProps>(), {
