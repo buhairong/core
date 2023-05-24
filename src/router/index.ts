@@ -97,6 +97,48 @@ const router = createRouter({
           }
         },
 
+        // 财务管理
+        {
+          path: '/finance/deposit',
+          name: 'deposit',
+          component: () => import('../views/finance/deposit.vue'),
+          meta: {
+            breadCrumb: [{ name: '财务管理' }, { name: '提车押金' }]
+          }
+        },
+        {
+          path: '/finance/depositDetail',
+          name: 'depositDetail',
+          component: () => import('../views/finance/depositDetail.vue'),
+          meta: {
+            breadCrumb: [{ name: '财务管理' }, { name: '提车押金' }]
+          }
+        },
+        {
+          path: '/finance/subscribe',
+          name: 'subscribe',
+          component: () => import('../views/finance/subscribe.vue'),
+          meta: {
+            breadCrumb: [{ name: '财务管理' }, { name: '订阅费用' }]
+          }
+        },
+        {
+          path: '/finance/subscribeDetail',
+          name: 'subscribeDetail',
+          component: () => import('../views/finance/subscribeDetail.vue'),
+          meta: {
+            breadCrumb: [{ name: '财务管理' }, { name: '订阅费用' }]
+          }
+        },
+        {
+          path: '/finance/brokerage',
+          name: 'brokerage',
+          component: () => import('../views/finance/brokerage.vue'),
+          meta: {
+            breadCrumb: [{ name: '财务管理' }, { name: '返佣申请' }]
+          }
+        },
+
         // 系统设置
         {
           path: '/system/openNewCar',

@@ -1,68 +1,45 @@
 <template>
-    <el-date-picker
-        v-model="value"
-        type="daterange"
-        range-separator="-"
-        start-placeholder="开始日期"
-        end-placeholder="结束日期"
-        :style="selectStyle"
-        format="yyyy-MM-dd"
-        value-format="yyyy-MM-dd"
-        @change="changeDate"
-    >
-    </el-date-picker>
+  <el-date-picker
+    type="daterange"
+    :range-separator="props.rangeSeparator"
+    :start-placeholder="props.startPlaceholder"
+    :end-placeholder="props.endPlaceholder"
+    :format="props.format"
+    :value-format="props.valueFormat"
+    :style="styleObj"
+    v-bind="$attrs"
+  >
+  </el-date-picker>
 </template>
 
-<script>
-import { MIN_AMOUNT, MAX_AMOUNT } from '@/utils/constant'
-export default {
-    props: {
-        selectStyle: {
-            type: Object,
-            default: () => ({})
-        },
+<script setup lang="ts">
+interface IProps {
+  rangeSeparator?: string
+  startPlaceholder?: string
+  endPlaceholder?: string
+  format?: string
+  valueFormat?: string
+  styleObj?: Object
+}
 
-        value: {
-            type: Array,
-            default: () => [],
-        },
-    },
+const defaultStyleObj = {
+  width: '255px',
+  background: '#f2f3f5'
+}
 
-    data() {
-        return {
-            MIN_AMOUNT, 
-            MAX_AMOUNT,
-        }
-    },
-    
-    methods: {
-        changeDate(e) {
-            this.$emit('select', e)
-        },
-    },
+const props = withDefaults(defineProps<IProps>(), {
+  rangeSeparator: '-',
+  startPlaceholder: '开始日期',
+  endPlaceholder: '结束日期',
+  format: 'YYYY-MM-DD',
+  valueFormat: 'YYYY-MM-DD',
+  styleObj: () => ({})
+})
+
+const styleObj = {
+  ...defaultStyleObj,
+  ...props.styleObj
 }
 </script>
 
-<style lang="less" scoped>
-.el-date-editor {
-    width: 364px;
-    height: 32px;
-    background: #F2F3F5;
-    border: none;
-    border-radius: 2px;
-    display: flex;
-    align-items: center;
-    /deep/ .el-range-input {
-        background: transparent;
-    }
-    /deep/ .el-input__icon {
-        display: flex;
-        align-items: center;
-    }
-    /deep/ .el-range-separator {
-        display: flex;
-        align-items: center;
-    }
-}
-
-</style>
+<style lang="scss" scoped></style>
