@@ -50,7 +50,7 @@ export interface IFinancialSelectorRecord {
   brandList: IBrandRecord[]
 }
 
-interface IBillRecord {
+export interface IBillRecord {
   bankBills: string[]
   confirmed: number
   createdTime: string
@@ -74,4 +74,12 @@ interface ICostInfo {
 export interface IFinancialDetail {
   billList: IBillRecord[]
   costInfo: ICostInfo
+}
+
+export interface IConfirmAccountOfBankParams {
+  accountDetailId: number
+  businessId: number
+  type: number
+  confirmed: number
+  remark: string
 }

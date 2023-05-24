@@ -57,21 +57,26 @@ export const useSearch = (type: number) => {
 export const useDetail = (type: number, orderId: number) => {
   const detail = ref<IFinancialDetail>()
 
-  const data = {
-    orderId
+  const search = () => {
+    const data = {
+      orderId
+    }
+
+    if (type === 1) {
+      selectDepositDetail(data).then((res) => {
+        detail.value = res
+      })
+    } else {
+      selectSubscribeFeeDetail(data).then((res) => {
+        detail.value = res
+      })
+    }
   }
 
-  if (type === 1) {
-    selectDepositDetail(data).then((res) => {
-      detail.value = res
-    })
-  } else {
-    selectSubscribeFeeDetail(data).then((res) => {
-      detail.value = res
-    })
-  }
+  search()
 
   return {
-    detail
+    detail,
+    search
   }
 }

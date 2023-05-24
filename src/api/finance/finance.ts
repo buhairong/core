@@ -3,7 +3,8 @@ import type {
   IFinanceSearch,
   IFinanceList,
   IFinancialSelectorRecord,
-  IFinancialDetail
+  IFinancialDetail,
+  IConfirmAccountOfBankParams
 } from '@/types'
 
 // 查询筛选条件
@@ -52,7 +53,7 @@ export function selectSubscribeFeeDetail(params: { orderId: number }) {
 }
 
 // 订阅费用及押金流水确认
-export function confirmSubscribeAccountDetailOfBank(data) {
+export function confirmSubscribeAccountDetailOfBank(data: IConfirmAccountOfBankParams) {
   return instance({
     url: '/manager/financialManager/confirmSubscribeAccountDetailOfBank',
     method: 'POST',

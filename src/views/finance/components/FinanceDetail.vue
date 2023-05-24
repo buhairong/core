@@ -132,7 +132,13 @@
         账单已分{{ detail.billList.length }}笔支付
       </div>
 
-      <BillListTable :detail="detail" />
+      <BillListTable
+        v-if="orderId"
+        :detail="detail"
+        :type="type"
+        :orderId="orderId"
+        @update="search"
+      />
     </div>
   </div>
 </template>
@@ -152,7 +158,7 @@ const mobile = (route.query as any).mobile
 const emergencyContactName = (route.query as any).emergencyContactName
 const emergencyContactPhone = (route.query as any).emergencyContactPhone
 
-const { detail } = useDetail(type, orderId)
+const { detail, search } = useDetail(type, orderId)
 </script>
 
 <style lang="scss" scoped>

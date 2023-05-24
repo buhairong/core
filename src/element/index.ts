@@ -2,6 +2,7 @@ import type { App } from 'vue'
 import Pagination from './pagination/Pagination.vue'
 import Input from './input/CInput.vue'
 import CInputNumber from './input/CInputNumber.vue'
+import CTextArea from './input/CTextArea.vue'
 import CSelect from './select/CSelect.vue'
 import DateRangeSelect from './select/DateRangeSelect.vue'
 import SearchButton from './button/SearchButton.vue'
@@ -14,6 +15,7 @@ export default {
     app.component('pagination', Pagination)
     app.component('c-input', Input)
     app.component('c-input-number', CInputNumber)
+    app.component('c-text-area', CTextArea)
     app.component('c-select', CSelect)
     app.component('date-range-select', DateRangeSelect)
     app.component('search-button', SearchButton)
