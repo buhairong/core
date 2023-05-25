@@ -11,7 +11,7 @@ import Search from './components/BrokerageSearch.vue'
 import List from './components/BrokerageList.vue'
 import { useSearch } from './use/useBrokerage'
 
-const type = 1
+const type = 2
 const { total, list, handlerSearch, handleCurrentChange } = useSearch(type)
 </script>
 

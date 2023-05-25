@@ -1,207 +1,160 @@
 <template>
-    <div>
-        <el-table 
-            :data="list"
-            style="width: 100%"
-            :header-cell-style="{background:'#F2F3F5',color:'#1D2129'}"
-        >
-            <el-table-column
-                label="返佣金额"
-            >
-                <template slot-scope="scope">
-                    <div>
-                        <div>{{formatThousandNumber(scope.row.money)}}元</div>
-                    </div>
-                </template>
-            </el-table-column>
+  <div>
+    <el-table
+      :data="props.list"
+      style="width: 100%"
+      :header-cell-style="{ background: '#F2F3F5', color: '#1D2129' }"
+    >
+      <el-table-column label="返佣金额">
+        <template #default="scope">
+          <div>
+            <div>{{ formatThousandNumber(scope.row.money) }}元</div>
+          </div>
+        </template>
+      </el-table-column>
 
-            <el-table-column
-                label="收款人信息"
-            >
-                <template slot-scope="scope">
-                    <div>
-                        <div>{{scope.row.name}}</div>
-                        <div>{{scope.row.idCard}}</div>
-                    </div>
-                </template>
-            </el-table-column>
+      <el-table-column label="收款人信息">
+        <template #default="scope">
+          <div>
+            <div>{{ scope.row.name }}</div>
+            <div>{{ scope.row.idCard }}</div>
+          </div>
+        </template>
+      </el-table-column>
 
-            <el-table-column
-                label="收款人银行卡号"
-                prop="bankAccountId"
-            >
-            </el-table-column>
+      <el-table-column label="收款人银行卡号" prop="bankAccountId"> </el-table-column>
 
-            <el-table-column
-                label="银行"
-                prop="bankName"
-            >
-            </el-table-column>
+      <el-table-column label="银行" prop="bankName"> </el-table-column>
 
-            <el-table-column
-                label="申请时间"
-                prop="createTime"
-            >
-            </el-table-column>
+      <el-table-column label="申请时间" prop="createTime"> </el-table-column>
 
-            <el-table-column
-                label="状态"
-            >
-                <template slot-scope="scope">
-                    <div :class="{'error-status': scope.row.status === 0}">{{scope.row.statusStr}}</div>
-                </template>
-            </el-table-column>
+      <el-table-column label="状态">
+        <template #default="scope">
+          <div :class="{ 'error-status': scope.row.status === 0 }">{{ scope.row.statusStr }}</div>
+        </template>
+      </el-table-column>
 
-            <el-table-column
-                label="完成时间"
-            >
-                <template slot-scope="scope">
-                    <div>
-                        <div>{{scope.row.updateTime || '-'}}</div>
-                    </div>
-                </template>
-            </el-table-column>
+      <el-table-column label="完成时间">
+        <template #default="scope">
+          <div>
+            <div>{{ scope.row.updateTime || '-' }}</div>
+          </div>
+        </template>
+      </el-table-column>
 
-            <el-table-column
-                label="操作"
-                width="110"
-                align="center"
-            >
-                <template slot-scope="scope">
-                    <div v-if="scope.row.status === 2" class="table-btn" @click="agree(scope.row.id)">完成放款</div>
-                    <div v-if="scope.row.status === 2" class="table-btn" @click="reject(scope.row.id)">信息有误</div>
-                    <div class="table-btn" @click="goDetailPage(scope.row)">查看详情</div>
-                </template>
-            </el-table-column>
-        </el-table>
+      <el-table-column label="操作" width="110" align="center">
+        <template #default="scope">
+          <div v-if="scope.row.status === 2" class="table-btn" @click="agree(scope.row.id)">
+            完成放款
+          </div>
+          <div v-if="scope.row.status === 2" class="table-btn" @click="reject(scope.row.id)">
+            信息有误
+          </div>
+          <div class="table-btn" @click="goDetailPage(scope.row)">查看详情</div>
+        </template>
+      </el-table-column>
+    </el-table>
 
-        <el-dialog
-            title="转账信息有误"
-            :visible.sync="showRejectDialog"
-            width="480px"
-            :before-close="handleClose"
-        >
-            
-            <div class="wrap">
-                <div>
-                    <div class="dialog-tip">备注说明</div>
-                    <c-text-area 
-                        :inputValue.sync="remark"
-                        placeholder="请输入备注说明~最多可输入100个字"
-                    />
-                </div>
+    <el-dialog
+      title="转账信息有误"
+      v-model="showRejectDialog"
+      width="480px"
+      :before-close="handleClose"
+    >
+      <div>
+        <div class="dialog-tip">备注说明</div>
+        <c-text-area v-model="remark" placeholder="请输入备注说明~最多可输入100个字" />
+      </div>
 
-                <span slot="footer" class="dialog-footer">
-                    <div class="dialog-btn-wrap" style="margin-top:40px">
-                        <div class="btn" @click="handleClose">取消</div>
-                        <div class="btn save-btn" @click="handleReject">确认</div>
-                    </div>
-                </span>
-            </div>
-        </el-dialog>
-    </div>
+      <template #footer>
+        <div class="dialog-btn-wrap" style="margin-top: 40px">
+          <div class="btn" @click="handleClose">取消</div>
+          <div class="btn save-btn" @click="handleReject">确认</div>
+        </div>
+      </template>
+    </el-dialog>
+  </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import type { IBrokerageRecord } from '@/types'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { ElMessageBox, ElMessage } from 'element-plus'
 import { updateStatusOfBrokerage } from '@/api/finance/finance'
 import { formatThousandNumber } from '@/utils/util'
 
-export default {
-    props: {
-        list: {
-            type: Array,
-            required: true,
-        },
-        type: {
-            type: Number, // 1个人，2店铺
-            required: true,
-        },
-    },
+interface IProps {
+  type: number
+  list: IBrokerageRecord[]
+}
 
-    data() {
-        return {
-            remark: '',
-            showRejectDialog: false,
-            rejectId: null,
-        }
-    },
+const props = defineProps<IProps>()
+const emits = defineEmits(['search'])
 
-    mounted() {
-        
-    },
+const router = useRouter()
+const remark = ref<string>('')
+const showRejectDialog = ref<boolean>(false)
+const rejectId = ref<number | null>(null)
 
-    methods: {
-        formatThousandNumber(num) {
-            if (num || num == 0) {
-                return formatThousandNumber(num)
-            }
-            return 0
-        },
+const agree = (id: number) => {
+  ElMessageBox.confirm(`确认完成这笔放款吗？`, '提示', {
+    confirmButtonText: '确认',
+    cancelButtonText: '取消'
+  }).then(() => {
+    updateStatus(1, id)
+  })
+}
 
-        agree(id) {
-            this.$confirm(`确认完成这笔放款吗？`, '提示', {
-                confirmButtonText: '确认',
-                cancelButtonText: '取消',
-            }).then(() => {
-                this.updateStatusOfBrokerage(1, id)
-            })
-        },
+const reject = (id: number) => {
+  showRejectDialog.value = true
+  rejectId.value = id
+}
 
-        reject(id) {
-            this.showRejectDialog = true
-            this.rejectId = id
-        },
+const handleClose = () => {
+  showRejectDialog.value = false
+  rejectId.value = null
+}
 
-         handleClose() {
-            this.showRejectDialog = false
-            this.rejectId = null
-        },
+const handleReject = () => {
+  if (!remark.value.trim()) {
+    ElMessage.error('请输入备注说明')
+    return
+  }
 
-        handleReject() {
-            if (!this.remark.trim()) {
-                this.$message.error('请输入备注说明')
-                return
-            }
+  if (rejectId.value) {
+    updateStatus(0, rejectId.value)
+  }
 
+  handleClose()
+}
 
-            this.updateStatusOfBrokerage(0, this.rejectId)
-            this.handleClose()
-        },
+const updateStatus = (status: number, id: number) => {
+  const data = {
+    status,
+    id,
+    remark: remark.value
+  }
+  updateStatusOfBrokerage(data).then(() => {
+    ElMessage.success('保存成功')
+    emits('search')
+  })
+}
 
-        updateStatusOfBrokerage(status, id) {
-            const data = {
-                status,
-                id,
-                remark: this.remark,
-            }
-            updateStatusOfBrokerage(data).then(res => {
-                if (res.code === 0) {
-                    this.$message.success('保存成功')
-                    this.$emit('update')
-                } else {
-                    this.$message.error('保存失败')
-                }
-            }).catch(err => {
-                this.$message.error('保存失败')
-            })
-        },
-
-        goDetailPage(row) {
-            this.$router.push({
-                path: '/finance/brokerageDetail',
-                query: {
-                    type: this.type,
-                    ...row
-                },
-            })
-        },
-    },
+const goDetailPage = (row: IBrokerageRecord) => {
+  router.push({
+    path: '/finance/brokerageDetail',
+    query: {
+      type: props.type,
+      ...row
+    }
+  })
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .error-status {
-    color: #EA0000;
+  color: #ea0000;
 }
 .wrap {
   display: flex;
@@ -214,7 +167,7 @@ export default {
     font-family: PingFangSC-Regular;
     font-size: 14px;
     line-height: 22px;
-    color: #4E5969;
+    color: #4e5969;
   }
 }
 </style>

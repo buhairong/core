@@ -135,7 +135,15 @@ const router = createRouter({
           name: 'brokerage',
           component: () => import('../views/finance/brokerage.vue'),
           meta: {
-            breadCrumb: [{ name: '财务管理' }, { name: '返佣申请' }]
+            breadCrumb: [{ name: '财务管理' }, { name: '个人返佣申请' }]
+          }
+        },
+        {
+          path: '/finance/merchantBrokerage',
+          name: 'merchantBrokerage',
+          component: () => import('../views/finance/merchantBrokerage.vue'),
+          meta: {
+            breadCrumb: [{ name: '财务管理' }, { name: '商户返佣申请' }]
           }
         },
 

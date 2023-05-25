@@ -4,7 +4,9 @@ import type {
   IFinanceList,
   IFinancialSelectorRecord,
   IFinancialDetail,
-  IConfirmAccountOfBankParams
+  IConfirmAccountOfBankParams,
+  IBrokerageSearch,
+  IBrokerageList
 } from '@/types'
 
 // 查询筛选条件
@@ -62,8 +64,8 @@ export function confirmSubscribeAccountDetailOfBank(data: IConfirmAccountOfBankP
 }
 
 // 返佣列表查询
-export function selectBrokerageList(data) {
-  return instance({
+export function selectBrokerageList(data: IBrokerageSearch) {
+  return instance<IBrokerageList, IBrokerageList>({
     url: '/manager/userBrokerageRecord/selectBrokerageListByPage',
     method: 'POST',
     data
@@ -71,7 +73,7 @@ export function selectBrokerageList(data) {
 }
 
 // 更新佣金记录状态
-export function updateStatusOfBrokerage(data) {
+export function updateStatusOfBrokerage(data: { status: number; id: number; remark: string }) {
   return instance({
     url: '/manager/userBrokerageRecord/updateStatusOfBrokerage',
     method: 'POST',
