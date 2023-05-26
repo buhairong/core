@@ -147,11 +147,27 @@ const router = createRouter({
           }
         },
         {
+          path: '/finance/brokerageDetail',
+          name: 'brokerageDetail',
+          component: () => import('../views/finance/brokerageDetail.vue'),
+          meta: {
+            breadCrumb: [{ name: '财务管理' }, { name: '个人返佣申请详情' }]
+          }
+        },
+        {
           path: '/finance/merchantBrokerage',
           name: 'merchantBrokerage',
           component: () => import('../views/finance/merchantBrokerage.vue'),
           meta: {
             breadCrumb: [{ name: '财务管理' }, { name: '商户返佣申请' }]
+          }
+        },
+        {
+          path: '/finance/merchantBrokerageDetail',
+          name: 'merchantBrokerageDetail',
+          component: () => import('../views/finance/merchantBrokerageDetail.vue'),
+          meta: {
+            breadCrumb: [{ name: '财务管理' }, { name: '商户返佣申请详情' }]
           }
         },
 

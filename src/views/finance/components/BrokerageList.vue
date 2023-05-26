@@ -142,8 +142,14 @@ const updateStatus = (status: number, id: number) => {
 }
 
 const goDetailPage = (row: IBrokerageRecord) => {
+  let path = '/finance/brokerageDetail'
+
+  if (props.type === 2) {
+    path = '/finance/merchantBrokerageDetail'
+  }
+
   router.push({
-    path: '/finance/brokerageDetail',
+    path,
     query: {
       type: props.type,
       ...row
