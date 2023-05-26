@@ -63,6 +63,14 @@ const router = createRouter({
           }
         },
         {
+          path: '/product/setTemplate',
+          name: 'setTemplate',
+          component: () => import('../views/plan/setTemplate.vue'),
+          meta: {
+            breadCrumb: [{ name: '产品管理' }, { name: '设置模板' }]
+          }
+        },
+        {
           path: '/product/subscribe',
           name: 'Subscribe',
           component: () => import('../views/plan/Subscribe.vue'),
