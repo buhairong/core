@@ -33,7 +33,7 @@
           />
         </div>
 
-        <search-button class="search-btn" @search="searchList" />
+        <search-button class="search-btn" @click="searchList" />
       </div>
 
       <div class="search-line search-line2">
@@ -62,7 +62,7 @@
           <date-range-select v-model="dateRange" @change="handlerSelectDate" />
         </div>
 
-        <reset-button class="search-btn" @reset="reset" />
+        <reset-button class="search-btn" @click="reset" />
       </div>
     </div>
   </div>
@@ -86,7 +86,9 @@ const confirmList = [
   { label: '待确认', value: 0 },
   { label: '已完成', value: 1 }
 ]
-const search = ref<IFinanceSearch>(defaultFinanceSearchValue)
+const search = ref<IFinanceSearch>({
+  ...defaultFinanceSearchValue
+})
 const dateRange = ref<string[]>([])
 const selector = ref<IFinancialSelectorRecord>({
   auditList: [],

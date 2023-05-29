@@ -73,6 +73,7 @@ const reset = () => {
   search.value.cityId = null
   search.value.contractStatus = null
   search.value.type = null
+  search.value.page = 1
   searchList()
 }
 

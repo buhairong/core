@@ -23,8 +23,8 @@
           />
         </div>
 
-        <search-button class="search-btn" @search="searchList" />
-        <reset-button class="reset-btn" @reset="reset" />
+        <search-button class="search-btn" @click="searchList" />
+        <reset-button class="reset-btn" @click="reset" />
       </div>
     </div>
   </div>
@@ -48,7 +48,9 @@ const BROKERAGE_RISK_STATUS = [
   { value: 1, label: '批准' },
   { value: 2, label: '待放款' }
 ]
-const search = ref<IBrokerageSearch>(defaultBrokerageSearchValue)
+const search = ref<IBrokerageSearch>({
+  ...defaultBrokerageSearchValue
+})
 
 const createTimeRange = ref<string[]>([])
 const updateTimeRange = ref<string[]>([])

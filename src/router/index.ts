@@ -86,6 +86,14 @@ const router = createRouter({
             breadCrumb: [{ name: '产品管理' }, { name: '金融方案' }]
           }
         },
+        {
+          path: '/product/setFinancial',
+          name: 'setFinancial',
+          component: () => import('../views/plan/setFinancial.vue'),
+          meta: {
+            breadCrumb: [{ name: '产品管理' }, { name: '设置金融方案' }]
+          }
+        },
 
         // 订单管理
         {

@@ -13,8 +13,8 @@
           />
         </div>
 
-        <search-button class="search-btn" @search="searchList" />
-        <reset-button class="reset-btn" @reset="reset" />
+        <search-button class="search-btn" @click="searchList" />
+        <reset-button class="reset-btn" @click="reset" />
       </div>
     </div>
 
@@ -139,6 +139,7 @@ const searchList = () => {
 
 const reset = () => {
   search.value.templateName = ''
+  search.value.page = 1
 }
 
 const handleCurrentChange = (e: number) => {
