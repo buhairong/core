@@ -1,5 +1,5 @@
 import instance from '../base'
-import type { IFinancialSearch, IBrand, IFinancialList } from '@/types'
+import type { IFinancialSearch, IBrand, IFinancialList, IFinancialSetParams, ICity } from '@/types'
 
 // 查询筛选条件
 export function selectSubscribeFinancialScheme(data: IFinancialSearch) {
@@ -11,7 +11,7 @@ export function selectSubscribeFinancialScheme(data: IFinancialSearch) {
 }
 
 // 删除金融方案
-export function deleteSubscribeFinancialScheme(data: number[]) {
+export function deleteSubscribeFinancialScheme(data: { ids: number[] }) {
   return instance({
     url: '/manager/financialManager/deleteSubscribeFinancialScheme',
     method: 'POST',
@@ -20,7 +20,7 @@ export function deleteSubscribeFinancialScheme(data: number[]) {
 }
 
 // 创建金融方案
-export function createSubscribeFinancialScheme(data) {
+export function createSubscribeFinancialScheme(data: IFinancialSetParams) {
   return instance({
     url: '/manager/financialManager/createSubscribeFinancialScheme',
     method: 'POST',
@@ -29,7 +29,7 @@ export function createSubscribeFinancialScheme(data) {
 }
 
 // 修改金融方案
-export function updateSubscribeFinancialScheme(data) {
+export function updateSubscribeFinancialScheme(data: IFinancialSetParams) {
   return instance({
     url: '/manager/financialManager/updateSubscribeFinancialScheme',
     method: 'POST',
@@ -38,8 +38,8 @@ export function updateSubscribeFinancialScheme(data) {
 }
 
 // 金融方案详情
-export function detailSubscribeFinancialScheme(params) {
-  return instance({
+export function detailSubscribeFinancialScheme(params: { id: number }) {
+  return instance<IFinancialSetParams, IFinancialSetParams>({
     url: '/manager/financialManager/detailSubscribeFinancialScheme',
     method: 'GET',
     params
@@ -56,7 +56,7 @@ export function getCarBrand() {
 
 // 获取开放城市
 export function getCity() {
-  return instance({
+  return instance<ICity[], ICity[]>({
     url: '/manager/financialManager/city/getAll',
     method: 'GET'
   })

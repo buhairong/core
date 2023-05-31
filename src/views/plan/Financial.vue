@@ -113,7 +113,7 @@
 
       <el-table-column label="操作" width="110" align="center">
         <template #default="scope">
-          <div class="table-btn" @click="setFinancial(2, scope.row)">修改方案</div>
+          <div class="table-btn" @click="setFinancial(2, scope.row.id)">修改方案</div>
           <div class="table-btn" @click="del(scope.row)">删除方案</div>
         </template>
       </el-table-column>
@@ -187,12 +187,12 @@ const handleCurrentChange = (e: number) => {
   searchList()
 }
 
-const setFinancial = (type: number, row: IFinancialRecord | undefined = {}) => {
+const setFinancial = (type: number, id: number | null = null) => {
   router.push({
     path: '/product/setFinancial',
     query: {
-      type,
-      ...row
+      id,
+      type
     }
   })
 }
@@ -203,7 +203,7 @@ const del = (row: IFinancialRecord) => {
     cancelButtonText: '取消',
     type: 'warning'
   }).then(() => {
-    const data = [row.id as number]
+    const data = { ids: [row.id as number] }
     deleteSubscribeFinancialScheme(data).then(() => {
       ElMessage.success({
         message: `删除成功`,

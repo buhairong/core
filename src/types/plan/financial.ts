@@ -30,75 +30,19 @@ export interface IFinancialList {
   total: number
 }
 
-// brandList
-// : 
-// ["奥迪", "宝马", "奔驰"]
-// cityIdList
-// : 
-// [310100, 441900, 110100]
-// cityReqVoList
-// : 
-// [,…]
-// 0
-// : 
-// {city: "北京", createdBy: "", createdTime: null, id: 110100, open: 1, provinceId: 110000, updatedBy: "",…}
-// city
-// : 
-// "北京"
-// cityId
-// : 
-// 110100
-// createdBy
-// : 
-// ""
-// createdTime
-// : 
-// null
-// id
-// : 
-// 110100
-// open
-// : 
-// 1
-// provinceId
-// : 
-// 110000
-// updatedBy
-// : 
-// ""
-// updatedTime
-// : 
-// null
-// 1
-// : 
-// {city: "东莞", createdBy: "", createdTime: null, id: 441900, open: 1, provinceId: 440000, updatedBy: "",…}
-// 2
-// : 
-// {city: "上海", createdBy: "", createdTime: null, id: 310100, open: 1, provinceId: 310000, updatedBy: "",…}
-// companyId
-// : 
-// 209
-// companyName
-// : 
-// "永达金融"
-// depositRate
-// : 
-// 10
-// merchantTypeList
-// : 
-// [1, 3]
-// powerTypeList
-// : 
-// [7, 3]
-// priceSection
-// : 
-// [1, 2]
-// schemeDesc
-// : 
-// "bbb"
-// schemeName
-// : 
-// "aaa"
-// supportPeriodList
-// : 
-// [36]
+export interface IFinancialSetParams {
+  id?: number | null
+  brandList: string[]
+  cityIdList?: number[]
+  cityReqVoList: ICity[]
+  companyId: number | null
+  companyName: string
+  depositRate: number | null
+  residualValueRate: number | null
+  merchantTypeList: number[]
+  powerTypeList: number[]
+  priceSection: number[]
+  schemeName: string
+  schemeDesc?: string
+  supportPeriodList: number[]
+}

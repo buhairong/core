@@ -33,6 +33,7 @@ export interface IList {
 export interface ICity {
   city: string
   id: number
+  cityId?: number
 }
 
 export interface IOpenOrCloseCarTypeParams {
