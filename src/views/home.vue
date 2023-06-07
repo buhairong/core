@@ -5,7 +5,9 @@
       <Header @change="changeFirstMenu" />
       <el-main class="main">
         <BreadCrumb />
-        <RouterView class="content" />
+        <keep-alive :include="include">
+          <RouterView class="content" />
+        </keep-alive>
       </el-main>
     </el-container>
   </el-container>

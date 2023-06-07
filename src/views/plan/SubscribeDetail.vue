@@ -1,9 +1,9 @@
 <template>
-  <OrderList :carType="2" />
+  <div>订阅方案详情</div>
 </template>
 
 <script setup lang="ts">
-import OrderList from './components/OrderList.vue'
+import { ref } from 'vue'
 </script>
 
 <style lang="scss" scoped></style>

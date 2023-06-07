@@ -140,11 +140,12 @@ const searchList = () => {
 const reset = () => {
   search.value.templateName = ''
   search.value.page = 1
+  searchList()
 }
 
 const handleCurrentChange = (e: number) => {
   search.value.page = e
-  searchList
+  searchList()
 }
 
 const setTemplate = (type: number, row: ITemplateRecord | undefined = {}) => {
@@ -203,7 +204,7 @@ searchList()
 
 <style lang="scss" scoped>
 .create-btn-wrap {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   display: flex;
   justify-content: flex-end;
 }

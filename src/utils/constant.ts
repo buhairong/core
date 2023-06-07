@@ -222,8 +222,8 @@ export const CAR_STATUS = [
 
 // 车辆新旧列表
 export const CAR_NEW_STATUS = [
-  { value: '1', label: '全新车' },
-  { value: '2', label: '二手车' }
+  { value: 1, label: '全新车' },
+  { value: 2, label: '二手车' }
 ]
 
 // 维修记录跟进状态列表
@@ -309,7 +309,7 @@ export const SAFE_LIST = [
 ]
 
 // 二手车方案状态
-export const OLD_CAR_CHECK_STATUS = {
+export const OLD_CAR_CHECK_STATUS: Number_Key = {
   0: '待入驻',
   1: '已入驻',
   2: '已入驻'

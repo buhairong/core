@@ -79,6 +79,22 @@ const router = createRouter({
           }
         },
         {
+          path: '/product/setSubscribe',
+          name: 'setSubscribe',
+          component: () => import('../views/plan/setSubscribe.vue'),
+          meta: {
+            breadCrumb: [{ name: '产品管理' }, { name: '设置订阅方案' }]
+          }
+        },
+        {
+          path: '/product/SubscribeDetail',
+          name: 'SubscribeDetail',
+          component: () => import('../views/plan/SubscribeDetail.vue'),
+          meta: {
+            breadCrumb: [{ name: '产品管理' }, { name: '订阅方案详情' }]
+          }
+        },
+        {
           path: '/product/finance',
           name: 'Financial',
           component: () => import('../views/plan/Financial.vue'),
@@ -110,6 +126,14 @@ const router = createRouter({
           component: () => import('../views/order/OldCarOrder.vue'),
           meta: {
             breadCrumb: [{ name: '订单管理' }, { name: '二手车订单' }]
+          }
+        },
+        {
+          path: '/order/detail',
+          name: 'OrderDetail',
+          component: () => import('../views/order/OrderDetail.vue'),
+          meta: {
+            breadCrumb: [{ name: '订单管理' }, { name: '订单详情' }]
           }
         },
 
