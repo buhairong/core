@@ -192,7 +192,7 @@ const onPreview = (list: IContractFile[]) => {
   showImageView.value = true
 }
 
-const openDialog = (type: string, item: IContract) => {
+const openDialog = (type: string, item?: IContract) => {
   if (type === 'edit' && item) {
     currentAgreement.value = {
       ...item,
