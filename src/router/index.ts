@@ -131,7 +131,7 @@ const router = createRouter({
         {
           path: '/order/detail',
           name: 'OrderDetail',
-          component: () => import('../views/order/OrderDetail.vue'),
+          component: () => import('@/views/order/OrderDetail.vue'),
           meta: {
             breadCrumb: [{ name: '订单管理' }, { name: '订单详情' }]
           }

@@ -25,6 +25,7 @@
     "element-plus": "^2.3.4",
     "normalize.css": "^8.0.1",
     "pinia": "^2.0.32",
+    "vite-plugin-vue-setup-extend": "^0.4.0",
     "vue": "^3.2.47",
     "vue-jsonp": "^2.0.0",
     "vue-router": "^4.1.6"

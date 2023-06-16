@@ -105,3 +105,84 @@ export interface IDeliveryRecord {
   valid: number | null
   whetherReceipt: number | null
 }
+
+interface IOtherConfig {
+  detailName: string
+  hasCheck: number | null
+  money: number | null
+}
+
+export interface ICarInfoRespVo {
+  carBrand: string
+  carBrandId: number | null
+  carColor: string
+  carEnergyType: number | null
+  carEngineNum: string
+  carPlateNum: string
+  carType: string
+  carTypeId: number | null
+  carTypeYear: string
+  carTypeYearId: number | null
+  carTypeYearProduct: string
+  carTypeYearProductId: number | null
+  carVin: string
+  guidancePrice: number | null
+  id: number | null
+  imageUrl: string
+  mileage: number | null
+  newOrOld: number | null
+  otherConfigList: IOtherConfig[]
+  plateDate: string
+  registerDate: string
+  status: number | null
+  tankSize: number | null
+  totalConfigMoney: null
+  travelLicenseUrl: string
+  orderNum: string
+}
+
+interface IPics {
+  carHandoverRecordId: number | null
+  carId: number
+  carPicsCategory: number
+  carPicsType: number
+  carType: number
+  createdBy: number
+  createdTime: string
+  fileId: number
+  id: number
+  remark: string
+  url: string
+  userCarSubscribeId: number
+}
+
+export interface IDeliveryCarPics {
+  carPicsType: number
+  picsList: IPics[]
+}
+
+export interface IInsurancePics {
+  createdBy: number
+  createdTime: string
+  fileId: number
+  id: number
+  insuranceId: number
+  url: string
+}
+
+export interface IInsurance {
+  amountOfThree: number | null
+  carId: number
+  carType: number
+  createdBy: number
+  createdTime: string
+  expireDate: string
+  id: number
+  insuranceCompany: string | number
+  insuranceCompanyName: string
+  insuranceNo: string
+  insurancePicsList: IInsurancePics[]
+  insuranceType: number
+  updatedBy: number | string | null
+  updatedTime: number | string | null
+}

@@ -6,26 +6,22 @@
     :before-close="handleCloseDistributionDialog"
   >
     <div class="car-info">
-      <el-image
-        style="width: 108px; height: 80px"
-        :src="props.currentOrder.imageUrl"
-        fit="cover"
-      ></el-image>
-      {{ props.currentOrder.carBrand }}·{{ props.currentOrder.carType }}
-      {{ props.currentOrder.carTypeYear }} {{ props.currentOrder.carTypeYearProduct }}
+      <el-image style="width: 108px; height: 80px" :src="imageUrl" fit="cover"></el-image>
+      {{ props.carBrand }}·{{ props.carType }} {{ props.carTypeYear }}
+      {{ props.carTypeYearProduct }}
     </div>
 
     <div class="item">
       <div class="item-title">订单编号:</div>
       <div class="item-content">
-        {{ props.currentOrder.orderNum }}
+        {{ props.orderNum }}
       </div>
     </div>
 
     <div class="item">
       <div class="item-title">用户信息:</div>
       <div class="item-content">
-        {{ props.currentOrder.name }}
+        {{ props.name }}
       </div>
     </div>
 
@@ -56,25 +52,33 @@
 </template>
 
 <script setup lang="ts">
-import type { IOrderRecord, IDeliveryRecord } from '@/types'
+import type { IDeliveryRecord } from '@/types'
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { selectCarDeliveryListOfOrder, bindCarDeliveryToOrder } from '@/api/order/order'
 
 interface IProps {
   show: boolean
-  currentOrder: IOrderRecord
+  orderId: number
+  imageUrl: string
+  carBrand: string
+  carType: string
+  carTypeYear: string
+  carTypeYearProduct: string
+  orderNum: string
+  name: string
+  carDeliveryId: number | null
 }
 
 const props = defineProps<IProps>()
 const emits = defineEmits(['close', 'save'])
 
 const showDistributionDialog = ref<boolean>(props.show)
-const carDeliveryId = ref<number | null>(props.currentOrder.carDeliveryId)
+const carDeliveryId = ref<number | null>(props.carDeliveryId)
 const carDeliveryList = ref<IDeliveryRecord[]>([])
 
 selectCarDeliveryListOfOrder({
-  orderId: props.currentOrder.id
+  orderId: props.orderId
 }).then((res) => {
   carDeliveryList.value = res
 })
@@ -91,7 +95,7 @@ const saveDistribution = () => {
 
   const data = {
     carDeliveryId: carDeliveryId.value as number,
-    orderId: props.currentOrder.id as number
+    orderId: props.orderId as number
   }
 
   bindCarDeliveryToOrder(data).then(() => {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div ref="contentRef" @scroll="changeScroll">
     <div class="content-title">筛选</div>
 
     <div class="search-wrap">
@@ -202,7 +202,15 @@
     <DistributionDialog
       v-if="showDistributionDialog && currentOrder"
       :show="showDistributionDialog"
-      :currentOrder="currentOrder"
+      :orderId="currentOrder.id"
+      :imageUrl="currentOrder.imageUrl"
+      :carBrand="currentOrder.carBrand"
+      :carType="currentOrder.carType"
+      :carTypeYear="currentOrder.carTypeYear"
+      :carTypeYearProduct="currentOrder.carTypeYearProduct"
+      :orderNum="currentOrder.orderNum"
+      :name="currentOrder.name"
+      :carDeliveryId="currentOrder.carDeliveryId"
       @close="handleCloseDistributionDialog"
       @save="saveDistribution"
     />
@@ -218,7 +226,7 @@ import type {
   ICarYear,
   ICarProduct
 } from '@/types'
-import { ref } from 'vue'
+import { ref, onActivated } from 'vue'
 import { useRouter } from 'vue-router'
 import { selectOrderList } from '@/api/order/order'
 import { getCarBrand, getCarType, getCarYear, getCarProduct } from '@/api/car/car'
@@ -373,6 +381,16 @@ const saveDistribution = () => {
   searchList()
   handleCloseDistributionDialog()
 }
+
+const contentRef = ref()
+const scrollTop = ref<number>(0)
+const changeScroll = (e: any) => {
+  scrollTop.value = e.target.scrollTop
+}
+
+onActivated(() => {
+  contentRef.value.scrollTop = scrollTop.value
+})
 </script>
 
 <style lang="scss" scoped></style>

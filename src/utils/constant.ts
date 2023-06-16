@@ -1,5 +1,5 @@
 interface Number_Key {
-  [key: number]: string
+  [key: number]: any
 }
 
 // 图片上传地址
@@ -151,7 +151,7 @@ export const CHECKED_STATUS_ARRAY = [
 ]
 
 // 个人/企业 风险查询模型状态
-export const RISK_QUERY_STATUS = {
+export const RISK_QUERY_STATUS: Number_Key = {
   1: { label: '通过', fontColor: '#1D2129' },
   2: { label: '未通过', fontColor: '#EA0000' },
   3: { label: '人工审核', fontColor: '#FF8C00' },
@@ -190,12 +190,12 @@ export const ORDER_STATUS_LIST = [
 ]
 
 // 支付方式
-export const PAYMENT_TYPE = {
-  0: '月付',
-  1: '季付',
-  2: '年付',
-  3: '全款',
-  4: '一次性付清'
+export const PAYMENT_TYPE: Number_Key = {
+  0: '一次性支付',
+  1: '月付',
+  2: '季付',
+  3: '年付',
+  4: '半年付'
 }
 
 // 适用业务
@@ -215,9 +215,9 @@ export const FOLLOW_STATUS_TYPE = [
 
 // 车辆状态列表
 export const CAR_STATUS = [
-  { value: '0', label: '在库车' },
-  { value: '1', label: '待交车' },
-  { value: '2', label: '订阅中' }
+  { value: 0, label: '在库车' },
+  { value: 1, label: '待交车' },
+  { value: 2, label: '订阅中' }
 ]
 
 // 车辆新旧列表
@@ -233,14 +233,16 @@ export const MAINTENANCE_STATUS = [
 ]
 
 // 认证业务节点，10线上签约、20确认验车
-export const IDENTITY_BUSINESS_NODE = {
-  10: '线上签约',
-  20: '确认验车'
+export const IDENTITY_BUSINESS_NODE: Number_Key = {
+  10: '签署订阅协议',
+  20: '确认交车',
+  30: '实名认证'
 }
 
 // 认证信息来源，10wecars小程序
-export const IDENTITY_RESOURCE = {
-  10: 'wecars小程序'
+export const IDENTITY_RESOURCE: Number_Key = {
+  10: 'wecars小程序',
+  20: '商户小程序'
 }
 
 // 商户角色：1 4s，2 二级销售网络，3 二手车商
@@ -347,4 +349,24 @@ export const PRICE_SECTION = {
   3: '100万-200万',
   4: '200万-300万',
   5: '300万以上'
+}
+
+// 订单牌照选择
+export const USE_PLATE: Number_Key = {
+  0: '第三方牌照',
+  1: '自有牌照'
+}
+
+// 风控初审
+export const RISK_STATUS = [
+  { value: 1, label: '初审通过' },
+  { value: 2, label: '初审拒绝' }
+]
+
+// 车辆证照信息
+export const CAR_CERTIFICATE: Number_Key = {
+  1: '车体发票',
+  2: '购置税完税证明',
+  3: '车辆合格证',
+  4: '车辆登记证（大绿本）'
 }

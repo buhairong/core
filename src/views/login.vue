@@ -4,8 +4,8 @@
     <div class="form-wrap">
       <img class="logo" src="@/assets/logo_txt.png" />
       <el-form ref="formRef" :model="form" :rules="rules" label-width="100px">
-        <el-form-item label="用户名" prop="mobile">
-          <el-input v-model="form.mobile" placeholder="请输入用户名"></el-input>
+        <el-form-item label="用户名" prop="account">
+          <el-input v-model="form.account" placeholder="请输入用户名"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
           <el-input show-password v-model="form.password" placeholder="请输入密码"></el-input>
@@ -22,7 +22,6 @@
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import type { FormInstance, FormRules } from 'element-plus'
-import { ElMessage } from 'element-plus'
 import type { ILogin } from '@/types/login'
 import { accountLoginNotify } from '@/api/login'
 
@@ -30,12 +29,12 @@ const formRef = ref<FormInstance>()
 const router = useRouter()
 
 const form = reactive<ILogin>({
-  mobile: '',
+  account: '',
   password: ''
 })
 
 const rules = reactive<FormRules>({
-  mobile: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+  account: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
   password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
 })
 

@@ -64,8 +64,8 @@ export interface ICompnay {
   lat: number
   lng: number
   logoImageUrl: string
-  mchId: null
-  mchKey: null
+  mchId: string | number | null
+  mchKey: string | number | null
   rejectDetails: string
   shopEnvironmentPic: string
   shopHallPic: string

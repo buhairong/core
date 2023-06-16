@@ -2,7 +2,7 @@
   <OrderList :carType="2" />
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="OldCarOrder">
 import OrderList from './components/OrderList.vue'
 </script>
 

@@ -1,13 +1,15 @@
 <template>
   <el-container class="wrap">
     <Aside :firstMenuId="firstMenuId" v-if="firstMenuId" />
-    <el-container class="container">
+    <el-container class="out-container">
       <Header @change="changeFirstMenu" />
       <el-main class="main">
         <BreadCrumb />
-        <keep-alive :include="include">
-          <RouterView class="content" />
-        </keep-alive>
+        <router-view v-slot="{ Component }">
+          <keep-alive :include="include">
+            <component :is="Component" class="content" />
+          </keep-alive>
+        </router-view>
       </el-main>
     </el-container>
   </el-container>
@@ -20,7 +22,7 @@ import Header from '@/components/Header.vue'
 import Aside from '@/components/Aside.vue'
 import BreadCrumb from '@/components/BreadCrumb.vue'
 
-const include: string[] = []
+const include: string[] = ['NewCarOrder', 'OldCarOrder']
 const firstMenuId = ref<number | null>(null)
 
 const changeFirstMenu = (id: number) => {
@@ -32,7 +34,7 @@ const changeFirstMenu = (id: number) => {
 .wrap {
   width: 100vw;
   height: 100vh;
-  .container {
+  .out-container {
     display: flex;
     flex-direction: column;
     .main {
@@ -47,6 +49,7 @@ const changeFirstMenu = (id: number) => {
         width: 100%;
         background: #fff;
         overflow: auto;
+        position: relative;
       }
     }
   }
