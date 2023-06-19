@@ -23,10 +23,7 @@
       <el-table-column label="合同附件" align="center">
         <template #default="scope">
           <div class="files">
-            <el-image
-              style="width: 16px; height: 16px"
-              :src="require('@/assets/order/pdf-icon.png')"
-            ></el-image>
+            <el-image style="width: 16px; height: 16px" :src="pdfIcon"></el-image>
             <div class="file-count">{{ scope.row.fileList.length }}张</div>
             <div class="review-btn" @click="onPreview(scope.row.fileList)">查看</div>
           </div>
@@ -118,7 +115,7 @@
       <div class="item">
         <div class="item-label">有效期限：</div>
         <div class="item-content">
-          <date-range-select v-model="dateRange" @select="handlerSelectDate" />
+          <date-range-select v-model="dateRange" @change="handlerSelectDate" />
         </div>
       </div>
 
@@ -129,7 +126,7 @@
             <div class="img-wrap" v-for="(item, index) in currentAgreement.fileList" :key="index">
               <el-image style="width: 100px" :src="item" mode="widthFix"></el-image>
               <div class="del-icon" @click="delImg(index)">
-                <i class="el-icon-error" style="font-size: 20px"></i>
+                <el-icon class="avatar-uploader-icon"><CircleCloseFilled /></el-icon>
               </div>
             </div>
 
@@ -140,7 +137,7 @@
               :before-upload="beforeImgUpload"
               :on-success="handleSuccess"
             >
-              <i class="el-icon-plus avatar-uploader-icon"></i>
+              <el-icon class="avatar-uploader-icon"><Plus /></el-icon>
             </el-upload>
           </div>
         </div>
@@ -163,6 +160,7 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 import { createOrUpdateContract, deleteContract } from '@/api/order/order'
 import { UPLOAD_URL, IMG_LIMIT_SIZE } from '@/utils/constant'
 import FaceAudit from './FaceAudit.vue'
+import pdfIcon from '@/assets/order/pdf-icon.png'
 
 interface IProps {
   detail: IOrderDetail
@@ -242,7 +240,7 @@ const beforeImgUpload = (file: File) => {
 
 const handleSuccess = (res: any) => {
   if (currentAgreement.value) {
-    ;(currentAgreement.value.fileList as string[]).push(res.src)
+    ;(currentAgreement.value.fileList as string[]).push(res.data.src)
   }
 }
 
@@ -369,7 +367,7 @@ const closeElImage = () => {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
-        ::v-deep .el-upload {
+        :deep(.el-upload) {
           width: 100px;
           height: 100px;
         }

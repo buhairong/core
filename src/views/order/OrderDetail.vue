@@ -32,6 +32,12 @@
             :orderId="orderId"
             @update="getOrderDetail"
           />
+
+          <PayMentInfo v-show="activeTab === 5" :detail="detail.paiedInfo" />
+
+          <VehicleInfo v-show="activeTab === 6" :detail="detail" />
+
+          <OrderHistory v-show="activeTab === 7" :detail="detail.userCarSubscribeLog" />
         </div>
       </div>
       <back-button />
@@ -48,6 +54,9 @@ import OrderInfo from './components/OrderInfo.vue'
 import CustomerInfo from './components/CustomerInfo.vue'
 import CarInfo from './components/CarInfo.vue'
 import ContractInfo from './components/ContractInfo.vue'
+import PayMentInfo from './components/PayMentInfo.vue'
+import VehicleInfo from '@/views/cars/components/VehicleInfo.vue'
+import OrderHistory from './components/OrderHistory.vue'
 
 const route = useRoute()
 const orderId = (route.query as any).orderId - 0

@@ -141,7 +141,7 @@ export interface ICarInfoRespVo {
   orderNum: string
 }
 
-interface IPics {
+export interface IPics {
   carHandoverRecordId: number | null
   carId: number
   carPicsCategory: number

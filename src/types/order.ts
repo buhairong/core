@@ -159,7 +159,7 @@ export interface IOrderInfo {
   usePlate: number
 }
 
-interface IBill {
+export interface IBill {
   bankBills: string[]
   confirmed: number
   createdTime: string
@@ -180,7 +180,7 @@ interface ICostInfo {
   totalPlateNumFee: number
 }
 
-interface IPaiedInfo {
+export interface IPaiedInfo {
   billList: IBill[]
   billListOfDeposit: IBill[]
   costInfo: ICostInfo
@@ -201,7 +201,7 @@ interface IRiskQueryList {
   personalQuery: IQuery[]
 }
 
-interface IUserCarSubscribeLog {
+export interface IUserCarSubscribeLog {
   content: string
   time: string
 }
